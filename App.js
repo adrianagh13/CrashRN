@@ -27,7 +27,7 @@ export default function App() {
   const removeGoalHandler = goalId => {
     setCourseGoals(currentGoals => {
       return currentGoals.filter(goal => goal.id !== goalId);
-    });
+    })
   };
 
   //RETURNS use parentheses when they are going to render some item
