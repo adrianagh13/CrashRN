@@ -23,12 +23,13 @@ export default function App() {
       ...currentGoals,
       {id: Math.random().toString(), value: goalTitle},
     ]);
+    setIsAddMode(false); //whenever we add a modal, we have to set the state of the modal to false for it to automatically close
   };
 
   const removeGoalHandler = goalId => {
     setCourseGoals(currentGoals => {
       return currentGoals.filter(goal => goal.id !== goalId);
-    })
+    });
   };
 
   //RETURNS use parentheses when they are going to render some item
