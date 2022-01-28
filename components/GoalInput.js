@@ -8,6 +8,11 @@ const GoalInput = props => {
     setEnteredGoal(enteredText);
   };
 
+  const addGoalHandler = () => {
+    //props.onAddGoal.bind(this, enteredGoal)
+    props.onAddGoal(enteredGoal);
+    setEnteredGoal(''); //for clearing the input value
+  };
   //to set up an argument that should be past along we can use an anonymous func or bind
   //bind indicates arguments that should be received when the function gets called, in this case is the onPress
   //this way now we can add enteredGoal to the function
@@ -20,7 +25,8 @@ const GoalInput = props => {
           onChangeText={goalInputHandler}
           value={enteredGoal}
         />
-        <Button title="ADD" onPress={props.onAddGoal.bind(this, enteredGoal)} />
+        <Button title="CANCEL" color="red" onPress={props.onCancel} />
+        <Button title="ADD" onPress={addGoalHandler} />
       </View>
     </Modal>
   );
