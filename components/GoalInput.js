@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
+import {Button, StyleSheet, TextInput, View, Modal} from 'react-native';
 import {useState} from 'react/cjs/react.development';
 
 const GoalInput = props => {
@@ -12,22 +12,24 @@ const GoalInput = props => {
   //bind indicates arguments that should be received when the function gets called, in this case is the onPress
   //this way now we can add enteredGoal to the function
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder="Course Goal"
-        style={styles.input}
-        onChangeText={goalInputHandler}
-        value={enteredGoal}
-      />
-      <Button title="ADD" onPress={props.onAddGoal.bind(this, enteredGoal)} />
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Course Goal"
+          style={styles.input}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
+        />
+        <Button title="ADD" onPress={props.onAddGoal.bind(this, enteredGoal)} />
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flex: 1, //flex controls how much space an element inside a flexbox take, if the element we are adding flex to is the only child, it will take the 100% that the parent element gives
+    justifyContent: 'center',
     alignItems: 'center',
   },
   input: {
